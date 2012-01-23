@@ -24,13 +24,12 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Repositories;
         }
 
-        public Models.Repository Get(string Username, string RepositoryName)
+        public Models.Repository Get( string RepositoryName)
         {
-            LogProvider.LogMessage(string.Format("Repository.Get - Username : '{0}' , RepositoryName : '{1}'", Username, RepositoryName));
+            LogProvider.LogMessage(string.Format("Repository.Get - Username : '{0}' , RepositoryName : '{1}'",  RepositoryName));
 
-            var url = string.Format("{0}{1}/{2}",
-                "repos/show/",
-                Username,
+            var url = string.Format("{0}{1}",
+                "repos/show/",                
                 RepositoryName);
 
             var result = ConsumeJsonUrl<Models.Internal.RepositoryContainer<Models.Repository>>(url);
@@ -51,14 +50,14 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Repositories;
         }
 
-        public Models.Repository Watch(string Username, string RepositoryName)
+        public Models.Repository Watch( string RepositoryName)
         {
-            LogProvider.LogMessage(string.Format("Repository.Watch - Username : '{0}' , RepositoryName : '{1}'", Username, RepositoryName));
+            LogProvider.LogMessage(string.Format("Repository.Watch - Username : '{0}' , RepositoryName : '{1}'",  RepositoryName));
 
             Authenticate();
 
             var url = string.Format("repos/watch/{0}/{1}",
-                Username,
+                
                 RepositoryName);
 
             var result = ConsumeJsonUrl<Models.Internal.RepositoryContainer<Models.Repository>>(url);
@@ -66,14 +65,14 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Repository;
         }
 
-        public Models.Repository Unwatch(string Username, string RepositoryName)
+        public Models.Repository Unwatch( string RepositoryName)
         {
-            LogProvider.LogMessage(string.Format("Repository.Unwatch - Username : '{0}' , RepositoryName : '{1}'", Username, RepositoryName));
+            LogProvider.LogMessage(string.Format("Repository.Unwatch - Username : '{0}' , RepositoryName : '{1}'",  RepositoryName));
 
             Authenticate();
 
             var url = string.Format("repos/unwatch/{0}/{1}",
-                Username,
+                
                 RepositoryName);
 
             var result = ConsumeJsonUrl<Models.Internal.RepositoryContainer<Models.Repository>>(url);
@@ -81,14 +80,14 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Repository;
         }
 
-        public Models.Repository Fork(string Username, string RepositoryName)
+        public Models.Repository Fork( string RepositoryName)
         {
-            LogProvider.LogMessage(string.Format("Repository.Fork - Username : '{0}' , RepositoryName : '{1}'", Username, RepositoryName));
+            LogProvider.LogMessage(string.Format("Repository.Fork - Username : '{0}' , RepositoryName : '{1}'",  RepositoryName));
 
             Authenticate();
 
             var url = string.Format("repos/fork/{0}/{1}",
-                Username,
+                
                 RepositoryName);
 
             var result = ConsumeJsonUrl<Models.Internal.RepositoryContainer<Models.Repository>>(url);
@@ -212,11 +211,11 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.PublicKeys.ToArray();
         }
 
-        public string[] GetCollaborators(string Username, string RepositoryName)
+        public string[] GetCollaborators( string RepositoryName)
         {
-            LogProvider.LogMessage(string.Format("Repository.GetCollaborators - RepositoryName : '{0}' , Username : '{1}'", RepositoryName, Username));
+            LogProvider.LogMessage(string.Format("Repository.GetCollaborators - RepositoryName : '{0}' , Username : '{1}'", RepositoryName, ""));
 
-            var url = string.Format("repos/show/{0}/{1}/collaborators", Username, RepositoryName);
+            var url = string.Format("repos/show/{0}/collaborators",  RepositoryName);
 
             var result = ConsumeJsonUrl<Models.Internal.CollaboratorsCollection>(url);
 

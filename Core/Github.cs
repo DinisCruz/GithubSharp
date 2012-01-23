@@ -60,7 +60,7 @@ namespace GithubSharp.Core
 
         public Domain.Models.Repository GetRepository(string RepositoryName)
         {
-            string cacheKey = string.Format("_CacheProvider_Repository_{0}_{1}", Username, RepositoryName);
+            string cacheKey = string.Format("_CacheProvider_Repository_{0}_{1}",  RepositoryName);
             var cached = _CacheProvider.Get<Domain.Models.Repository>(
                 cacheKey);
             if (cached != null)
@@ -77,7 +77,7 @@ namespace GithubSharp.Core
 			}
 			else
 			{
-				string url = string.Format(GithubURLs.GetRepo, Username, RepositoryName);
+				string url = string.Format(GithubURLs.GetRepo,  RepositoryName);
 	            var result = _GetXMLFromURL(url);
 	            if (result == null)
 	                return null;
@@ -94,7 +94,7 @@ namespace GithubSharp.Core
 		
 		public byte[] GetBlobBinaryContent(string RepositoryName, string BlobSha)
 		{
-			var url = string.Format(GithubURLs.BlobOrTree, Username, RepositoryName, BlobSha);
+			var url = string.Format(GithubURLs.BlobOrTree,  RepositoryName, BlobSha);
 			if (!_VerifyURL(url))
 			{
 				return null;
@@ -104,7 +104,7 @@ namespace GithubSharp.Core
 		
 		public string GetBlobURL(string RepositoryName, string BlobSha)
 		{
-			var url = string.Format(GithubURLs.BlobOrTree, Username, RepositoryName, BlobSha);
+			var url = string.Format(GithubURLs.BlobOrTree,  RepositoryName, BlobSha);
 			if (!_VerifyURL(url))
 			{
 				return null;
@@ -114,7 +114,7 @@ namespace GithubSharp.Core
 		
 		public string GetBlobStringContent(string RepositoryName, string BlobSha)
 		{
-			var url = string.Format(GithubURLs.BlobOrTree, Username, RepositoryName, BlobSha);
+			var url = string.Format(GithubURLs.BlobOrTree,  RepositoryName, BlobSha);
 			if (!_VerifyURL(url))
 			{
 				return null;
@@ -148,14 +148,14 @@ namespace GithubSharp.Core
 		
 		public Domain.Models.Tree GetTree(string RepositoryName, string TreeSHA)
 		{
-			 string cacheKey = string.Format("_CacheProvider_GetTree_{0}_{1}_{1}", Username, RepositoryName, TreeSHA);
+			 string cacheKey = string.Format("_CacheProvider_GetTree_{0}_{1}_{1}",  RepositoryName, TreeSHA);
             var cached = _CacheProvider.Get<Domain.Models.Tree>(
                 cacheKey);
             if (cached != null)
                 return cached;
 			Domain.Models.Tree current = null;
 			
-			string url = string.Format(GithubURLs.BlobOrTree, Username, RepositoryName, TreeSHA);
+			string url = string.Format(GithubURLs.BlobOrTree,  RepositoryName, TreeSHA);
             var result = _GetStringFromURL(url);
             if (result == null)
                 return null;
@@ -201,7 +201,7 @@ namespace GithubSharp.Core
 
         private string _GetAssetURL(string RepositoryName, string FileName)
         {
-            return string.Format(GithubURLs.RawFile, Username, RepositoryName, FileName);
+            return string.Format(GithubURLs.RawFile,  RepositoryName, FileName);
         }
 
         private string _GetStringFromURL(string url)

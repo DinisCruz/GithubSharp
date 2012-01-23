@@ -6,7 +6,7 @@ using GithubSharp.Core.Services;
 
 namespace GithubSharp.Core.Base
 {
-    internal class Url
+    public class Url
     {
         internal Url(ICacheProvider Cache, ILogProvider Log)
         {

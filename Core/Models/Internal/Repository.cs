@@ -5,56 +5,56 @@ using System;
 namespace GithubSharp.Core.Models.Internal
 {
     [DataContract]
-    internal class RepositoryCollection<TRepoType>
+    public class RepositoryCollection<TRepoType>
     {
         [DataMember(Name = "repositories")]
         public IEnumerable<TRepoType> Repositories { get; set; }
     }
 
     [DataContract]
-    internal class RepositoryContainer<TRepoType>
+    public class RepositoryContainer<TRepoType>
     {
         [DataMember(Name = "repository")]
         public TRepoType Repository { get; set; }
     }
 
     [DataContract]
-    internal class RepositoryFromNetworkContainer
+    public class RepositoryFromNetworkContainer
     {
         [DataMember(Name = "network")]
         public IEnumerable<Repository> Network { get; set; }
     }
 
     [DataContract]
-    internal class RepositoryDelete
+    public class RepositoryDelete
     {
         [DataMember(Name = "delete_token")]
         public string DeleteToken { get; set; }
     }
 
     [DataContract]
-    internal class RepositoryDeleted
+    public class RepositoryDeleted
     {
         [DataMember(Name = "status")]
         public string Status { get; set; }
     }
 
     [DataContract]
-    internal class LanguagesCollection
+    public class LanguagesCollection
     {
         [DataMember(Name = "languages")]
         public Dictionary<string, int> Languages { get; set; }
     }
 
     [DataContract]
-    internal class TagCollection
+    public class TagCollection
     {
         [DataMember(Name = "tags")]
         public Dictionary<string, string> Tags { get; set; }
     }
 
     [DataContract]
-    internal class BranchesCollection
+    public class BranchesCollection
     {
         [DataMember(Name = "branches")]
         public JsonSimpleDictionary Branches { get; set; }

@@ -43,7 +43,7 @@ namespace ConsoleSample
                 Console.WriteLine("Position: {0} Number: {1}", pull.Position, pull.Number);
             }
 
-            var pull2 = pullApi.GetById("cocytus", "gitextensions", "1");
+            var pull2 = pullApi.GetById("gitextensions", "1");
             Console.WriteLine("Pull from {1}: {0}\r\nVotes: {2}\r\nBody: {3}\r\nGravatar ID: {4}", pull2.Title, pull2.User.Login, pull2.Votes, pull2.Body, pull2.User.GravatarId);
             foreach (var d in pull2.Discussion)
             {

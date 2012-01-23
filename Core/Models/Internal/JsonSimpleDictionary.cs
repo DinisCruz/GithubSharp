@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace GithubSharp.Core.Models.Internal
 {
     [Serializable]
-    internal class JsonSimpleDictionary : ISerializable
+    public class JsonSimpleDictionary : ISerializable
     {
         public Dictionary<string, string> Dict = new Dictionary<string, string>();
 

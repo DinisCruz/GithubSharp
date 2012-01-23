@@ -8,15 +8,13 @@ namespace GithubSharp.Core.API
     {
         public Object(ICacheProvider CacheProvider, ILogProvider LogProvider) : base(CacheProvider, LogProvider) { }
 
-        public IEnumerable<Models.Object> Trees(
-            string Username,
+        public IEnumerable<Models.Object> Trees(            
             string RepositoryName,
             string TreeSha)
         {
-            LogProvider.LogMessage(string.Format("Object.Trees - TreeSha : '{0}' , Username : '{1}', RepositoryName : '{2}'", TreeSha, Username, RepositoryName));
+            LogProvider.LogMessage(string.Format("Object.Trees - TreeSha : '{0}' , Username : '{1}', RepositoryName : '{2}'", TreeSha, "", RepositoryName));
 
-            var url = string.Format("tree/show/{0}/{1}/{2}",
-                Username,
+            var url = string.Format("tree/show/{0}/{1}",                
                 RepositoryName,
                 TreeSha);
 
@@ -25,20 +23,18 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Tree;
         }
 
-        public Blob Blob(
-            string Username,
+        public Blob Blob(            
             string RepositoryName,
             string TreeSha,
             string Path)
         {
             LogProvider.LogMessage(string.Format("Object.Blob - TreeSha : '{0}' , Username : '{1}', RepositoryName : '{2}', Path : '{3}'",
                 TreeSha,
-                Username,
+                "",
                 RepositoryName,
                 Path));
 
-            var url = string.Format("blob/show/{0}/{1}/{2}/{3}",
-                Username,
+            var url = string.Format("blob/show/{0}/{1}/{2}",                
                 RepositoryName,
                 TreeSha,
                 Path);
@@ -68,36 +64,32 @@ namespace GithubSharp.Core.API
             return result == null ? null : result.Blobs;
         }
 
-        public byte[] RawBinary(
-          string Username,
+        public byte[] RawBinary(          
             string RepositoryName,
             string BlobSha)
         {
             LogProvider.LogMessage(string.Format("Object.RawBinary - BlobSha : '{0}' , Username : '{1}', RepositoryName : '{2}'",
                 BlobSha,
-                Username,
+                "",
                 RepositoryName));
 
-            var url = string.Format("blob/show/{0}/{1}/{2}",
-                Username,
+            var url = string.Format("blob/show/{0}/{1}",                
                 RepositoryName,
                 BlobSha);
 
             return ConsumeUrlToBinary(url);
         }
 
-        public string RawString(
-         string Username,
+        public string RawString(         
            string RepositoryName,
            string BlobSha)
         {
             LogProvider.LogMessage(string.Format("Object.RawString - BlobSha : '{0}' , Username : '{1}', RepositoryName : '{2}'",
                 BlobSha,
-                Username,
+                "",
                 RepositoryName));
 
-            var url = string.Format("blob/show/{0}/{1}/{2}",
-                Username,
+            var url = string.Format("blob/show/{0}/{1}",                
                 RepositoryName,
                 BlobSha);
 
